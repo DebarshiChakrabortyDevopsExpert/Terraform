@@ -2,7 +2,7 @@
 
 |       Version       | Creation Date |  Description                                    | Author                 |
 | ------------------- | ------------- | ----------------------------------------------  | ---------------------  |
-|         1.0.0       | 3/6/2023   | Azure Application Service Windows Terraform module .  | Debarshi Chakraborty in IAC Team  |
+|         1.0.0       | 4/8/2024   | Azure Application Service Windows Terraform module .  | Debarshi Chakraborty in IAC Team  |
 
 **Sample Tfvars file to create Azure Application Service Windows**
 
@@ -144,8 +144,8 @@ windows_web_app = {
 
       webapp_vnets = {
             vnet1 = {
-                subnet_name             = "snet-org-prod-uks-h1s01-appservicessubnet"
-                vnet_name               = "vnet-org-prod-uks-h1s01"
+                subnet_name             = "snet-org-prod-uks-appservicessubnet"
+                vnet_name               = "vnet-org-prod-uks"
                 vnet_rg_name            = "rg-org-prod-uks-network"
             }
       }
@@ -154,7 +154,7 @@ windows_web_app = {
         ds1 = {
           name                           = "web App Logs and Metrics"
           log_analytics_destination_type = "Dedicated"
-          log_analytics_workspace_id     = "/subscriptions/b9306b0a-2efb-4dcc-8807-51afa375586d/resourceGroups/rg-org-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-org-mgmt-uks-01"
+          log_analytics_workspace_id     = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rg-org-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-org-mgmt-uks-01"
           
           log =[
             {  
