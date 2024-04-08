@@ -1,12 +1,12 @@
 resource "azurerm_synapse_workspace" "synapse_workspace" {
-  name                                 = "synapse-rms-${var.synapse_workspace.env}-uks-${var.synapse_workspace.instance_number}"
+  name                                 = "synapse-org-${var.synapse_workspace.env}-uks-${var.synapse_workspace.instance_number}"
   resource_group_name                  = var.synapse_workspace.resource_group_name
   location                             = var.synapse_workspace.location
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.data_lake.id
 
   ## If SQL Admin and password is not given sql_aad_admin or customer_managed_key needs to be passed
   sql_administrator_login          = data.azurerm_key_vault_secret.synapse_admin.value
-  sql_administrator_login_password = data.azurerm_key_vault_secret.synapse_password.value
+  sql_administrator_login_password = data.azurerm_key_vault_secret.synapse_password.value1
   compute_subnet_id                = try(var.synapse_workspace.compute_subnet_id, null)
 
   ## Either both should be true mentioned below or both should be false
