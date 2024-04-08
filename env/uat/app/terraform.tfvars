@@ -85,12 +85,6 @@ windows_web_app = {
           virtual_path  = "/"
         }
 
-        ip_restriction = {
-          ip_address = "xx.x.xx.x/25"
-          name       = "rule1"
-          priority   = 300
-          action     = "Allow"
-        }
       }
 
       auth_settings = {
