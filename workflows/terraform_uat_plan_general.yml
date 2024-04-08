@@ -1,0 +1,61 @@
+name: Terraform-UAT-General-Resources-Plan
+on: 
+  push:
+    branches:
+       - feature/**
+    paths:
+       - terraform/env/uat/general/**
+jobs:
+  Terraform-Action:
+    runs-on: DOCKER_PROD
+
+    env: 
+      environment: UAT
+      folder: general
+      backendrg: "rg-mhra-uat-uks-tf"
+      backendstorageaccount: "stmhrauatukstf01"
+      backendcontainer: "rms-uat-terraform-statefile"
+
+    defaults:
+      run:
+        working-directory: "./terraform/env/uat/general"
+
+    steps:
+      #==================================================
+      # Checkout Code Repository
+      #==================================================   
+      - name: 'Checkout Code Repository'
+        uses: actions/checkout@v2
+
+      #==================================================
+      # Set Environment Variables to UAT                       
+      #==================================================   
+      - name: Use UAT Environment Variables
+        run: |
+          set +x
+          echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZ_SUB_ID_RMS_UAT }}" >> $GITHUB_ENV
+          echo "ARM_TENANT_ID=${{ secrets.AZ_TEN_ID_RMS_UAT }}" >> $GITHUB_ENV
+          echo "ARM_CLIENT_ID=${{ secrets.AZ_CLI_ID_RMS_UAT }}" >> $GITHUB_ENV
+          echo "ARM_CLIENT_SECRET=${{ secrets.AZ_CLI_SEC_RMS_UAT }}" >> $GITHUB_ENV
+          set -x
+      #==================================================
+      # Terraform Init with backend   
+      #==================================================
+      - name: Terraform Init with backend
+        id: init
+        run: terraform init -backend-config="resource_group_name=$backendrg" -backend-config="storage_account_name=$backendstorageaccount" -backend-config="container_name=$backendcontainer" -backend-config="key=$environment.$folder.terraform.tfstate"
+
+      #==================================================
+      # Terraform plan                   
+      #==================================================
+      - name: Terraform plan
+        id: plan
+        run: |
+          terraform plan -var-file="terraform.tfvars" --out tfplan.binary
+          terraform show -json tfplan.binary > tfplan.json
+      #==================================================
+      # Checkov Analysis                    
+      #==================================================
+      - name: Checkov Analysis
+        id: checkov
+        run: checkov -f tfplan.json --soft-fail
