@@ -17,7 +17,7 @@ resource "azurerm_private_endpoint" "private_endpoint_logic_app_std" {
     for_each = try(each.value.private_dns_zone_group, null) != null ? [each.value.private_dns_zone_group] : []
     content {
       name                 = try(private_dns_zone_group.value.name, null)
-      private_dns_zone_ids = flatten([for ids, value in try(private_dns_zone_group.value.dnszones, null) : "/subscriptions/eb20d232-22b9-4915-9b81-6bbe3bb7344a/resourceGroups/${value.dns_zone_rg_name}/providers/Microsoft.Network/privateDnsZones/${value.dns_zone_name}"])
+      private_dns_zone_ids = flatten([for ids, value in try(private_dns_zone_group.value.dnszones, null) : "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/${value.dns_zone_rg_name}/providers/Microsoft.Network/privateDnsZones/${value.dns_zone_name}"])
     }
   }
 }
