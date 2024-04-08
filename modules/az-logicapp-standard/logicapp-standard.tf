@@ -1,5 +1,5 @@
 resource "azurerm_logic_app_standard" "logic_app_standard" {
-  name                               = "lgapp-rms-${var.logic_app_standard.env}-uks-${var.logic_app_standard.instance_number}"
+  name                               = "lgapp-org-${var.logic_app_standard.env}-uks-${var.logic_app_standard.instance_number}"
   location                           = var.logic_app_standard.location
   resource_group_name                = var.logic_app_standard.resource_group_name
   app_service_plan_id                = data.azurerm_service_plan.logic_app_std.id
