@@ -17,24 +17,15 @@ logic1pp1 = {
         env                 = "dev"
         instance_number     = "01"
         location            = "uksouth"
-        resource_group_name = "rg-mhra-dev-uks-rms"
+        resource_group_name = "rg-org-dev-uks-org"
 
         identity = {
           type = "SystemAssigned"
         }
 
         tags = {
-          "application"  = "RMS",
-          "costcentre"   = "tbc",
+          "application"  = "org",
           "createdby"    = "IaC",
-          "creationdate" = "tbc",
-          "datatype"     = "tbc",
-          "environment"  = "DEV",
-          "hostname"     = "tbc",
-          "name"         = "tbc",
-          "owner"        = "RMS",
-          "projectcode"  = "tbc",
-          "role"         = "tbc"
         }
       }
 
@@ -42,7 +33,7 @@ logic1pp1 = {
         ds1 = {
           name                           = "Logic App Logs and Metrics"
           log_analytics_destination_type = "Dedicated"
-          log_analytics_workspace_id     = "/subscriptions/b9306b0a-2efb-4dcc-8807-51afa375586d/resourceGroups/rg-mhra-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-mhra-mgmt-uks-01"
+          log_analytics_workspace_id     = "/subscriptions/b9306b0a-2efb-4dcc-8807-51afa375586d/resourceGroups/rg-org-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-org-mgmt-uks-01"
           
           log =[
             {  
