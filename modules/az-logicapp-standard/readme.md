@@ -14,14 +14,14 @@ logic_app_standard = {
         logic_app_standard = {
         env                  = "prod"
         instance_number      = "01"
-        resource_group_name  = "rg-mhra-prod-uks-rms"
+        resource_group_name  = "rg-org-prod-uks-org"
         location             = "uksouth"
-        service_plan_name    = "asp-rms-prod-uks-03"
-        service_plan_rg      = "rg-mhra-prod-uks-rms"
-        storage_account_name = "stmhraproduksrms01"
-        storage_rg_name      = "rg-mhra-prod-uks-rms"
-        application_insights_name = "appi-mhra-prod-uks-001"
-        application_insights_rg   = "rg-mhra-prod-uks-monitoring"
+        service_plan_name    = "asp-org-prod-uks-03"
+        service_plan_rg      = "rg-org-prod-uks-org"
+        storage_account_name = "storgproduksorg01"
+        storage_rg_name      = "rg-org-prod-uks-org"
+        application_insights_name = "appi-org-prod-uks-001"
+        application_insights_rg   = "rg-org-prod-uks-monitoring"
         app_settings = {}
         identity = {
             type = "SystemAssigned"
@@ -32,41 +32,32 @@ logic_app_standard = {
             http2_enabled       = true
         }
         tags = {
-        "application"  = "RMS",
-        "costcentre"   = "tbc",
+        "application"  = "org",
         "createdby"    = "IaC",
-        "creationdate" = "tbc",
-        "datatype"     = "tbc",
-        "environment"  = "PROD",
-        "hostname"     = "tbc",
-        "name"         = "tbc",
-        "owner"        = "RMS",
-        "projectcode"  = "tbc",
-        "role"         = "tbc"
         }
       }
       logic_app_std_vnets = {
           vnet1 = {
-                subnet_name             = "snet-mhra-prod-uks-h1s01-lgappsubnet"
-                vnet_name               = "vnet-mhra-prod-uks-h1s01"
-                vnet_rg_name            = "rg-mhra-prod-uks-network"
+                subnet_name             = "snet-org-prod-uks-h1s01-lgappsubnet"
+                vnet_name               = "vnet-org-prod-uks-h1s01"
+                vnet_rg_name            = "rg-org-prod-uks-network"
           }
       }
       logic_app_std_pvt_endpnt = {
             pvtendpoint1 = {
-                name                    = "priep-logicapp-rms-prod-uks-01"
+                name                    = "priep-logicapp-org-prod-uks-01"
                 location                = "uksouth"
-                resource_group_name     = "rg-mhra-prod-uks-rms"
-                subnet_name             = "snet-mhra-prod-uks-h1s01-app"
-                vnet_name               = "vnet-mhra-prod-uks-h1s01"
-                vnet_rg_name            = "rg-mhra-prod-uks-network"
-                private_connection_name = "prisc-logicapp-rms-prod-uks-01"
+                resource_group_name     = "rg-org-prod-uks-org"
+                subnet_name             = "snet-org-prod-uks-h1s01-app"
+                vnet_name               = "vnet-org-prod-uks-h1s01"
+                vnet_rg_name            = "rg-org-prod-uks-network"
+                private_connection_name = "prisc-logicapp-org-prod-uks-01"
                 private_dns_zone_group = {
                   name = "logicappstdgroup"
                   dnszones = {
                     zone1 = {
                       dns_zone_name    = "privatelink.azurewebsites.net"
-                      dns_zone_rg_name = "rg-mhra-cnct-uks-network"
+                      dns_zone_rg_name = "rg-org-cnct-uks-network"
                     }
                   }
                 }
@@ -76,7 +67,7 @@ logic_app_standard = {
         ds1 = {
           name                           = "Logic App Logs and Metrics"
           log_analytics_destination_type = "Dedicated"
-          log_analytics_workspace_id     = "/subscriptions/b9306b0a-2efb-4dcc-8807-51afa375586d/resourceGroups/rg-mhra-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-mhra-mgmt-uks-01"
+          log_analytics_workspace_id     = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rg-org-mgmt-uks-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-org-mgmt-uks-01"
           
           log =[
             {  
