@@ -7,7 +7,7 @@ on:
        - terraform/env/uat/db/**
 jobs:
   Terraform-Action:
-    runs-on: DOCKER_PROD
+    runs-on: AGENT
 
     env: 
       environment: UAT
