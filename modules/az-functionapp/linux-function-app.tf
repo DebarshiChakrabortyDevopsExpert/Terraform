@@ -1,5 +1,5 @@
 resource "azurerm_linux_function_app" "linux_function_app" {
-  name                       = "fa-rms-${var.linux_function_app.env}-uks-${var.linux_function_app.instance_number}"
+  name                       = "fa-org-${var.linux_function_app.env}-uks-${var.linux_function_app.instance_number}"
   resource_group_name        = var.linux_function_app.resource_group_name
   location                   = var.linux_function_app.location
   storage_account_name       = var.linux_function_app.storage_account_name
