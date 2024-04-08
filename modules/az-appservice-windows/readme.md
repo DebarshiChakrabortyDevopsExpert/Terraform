@@ -66,16 +66,7 @@ windows_web_app = {
       }
       tags = {
         "application"  = "org",
-        "costcentre"   = "tbc",
         "createdby"    = "IaC",
-        "creationdate" = "tbc",
-        "datatype"     = "tbc",
-        "environment"  = "PROD",
-        "hostname"     = "tbc",
-        "name"         = "tbc",
-        "owner"        = "org",
-        "projectcode"  = "tbc",
-        "role"         = "tbc"
       }
     }
       webapp_slot = {
