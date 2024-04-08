@@ -83,16 +83,7 @@
         }
         tags = {
           "application"  = "org",
-          "costcentre"   = "tbc",
           "createdby"    = "IaC",
-          "creationdate" = "tbc",
-          "datatype"     = "tbc",
-          "environment"  = "PROD",
-          "hostname"     = "tbc",
-          "name"         = "tbc",
-          "owner"        = "org",
-          "projectcode"  = "tbc",
-          "role"         = "tbc"
         }
 
         identity = {
@@ -108,13 +99,6 @@
           application_stack = {
             node_version = "16"
           }
-
-          ip_restriction = {
-          ip_address = "10.5.83.0/25"
-          name       = "rule1"
-          priority   = 300
-          action     = "Allow"
-        }
         }
       }
     }
