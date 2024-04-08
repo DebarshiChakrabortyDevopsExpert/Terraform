@@ -194,12 +194,6 @@ linux_function_app = {
           node_version = "16"
         }
 
-        ip_restriction = {
-        ip_address = "10.5.83.0/25"
-        name       = "rule1"
-        priority   = 300
-        action     = "Allow"
-      }
       }
     }
 
