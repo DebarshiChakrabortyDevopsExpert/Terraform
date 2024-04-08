@@ -1,5 +1,5 @@
 resource "azurerm_windows_web_app" "windows_web_app" {
-  name                       = "ase-org-${var.windows_web_app.env}-uks-${var.windows_web_app.instance_number}"
+  name                       = "ase-org-${var.windows_web_app.env}-eus-${var.windows_web_app.instance_number}"
   resource_group_name        = var.windows_web_app.resource_group_name
   location                   = var.windows_web_app.location
   service_plan_id            = data.azurerm_service_plan.windows_web_app.id

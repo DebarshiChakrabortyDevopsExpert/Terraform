@@ -1,5 +1,5 @@
 resource "azurerm_synapse_workspace" "synapse_workspace" {
-  name                                 = "synapse-org-${var.synapse_workspace.env}-uks-${var.synapse_workspace.instance_number}"
+  name                                 = "synapse-org-${var.synapse_workspace.env}-eus-${var.synapse_workspace.instance_number}"
   resource_group_name                  = var.synapse_workspace.resource_group_name
   location                             = var.synapse_workspace.location
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.data_lake.id

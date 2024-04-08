@@ -1,6 +1,6 @@
 resource "azurerm_mssql_elasticpool" "mssql_elasticpool" {
   for_each            = var.mssql_elasticpool
-  name                = "sqlpool-org-${each.value.env}-uks-${each.value.instance_number}"
+  name                = "sqlpool-org-${each.value.env}-eus-${each.value.instance_number}"
   resource_group_name = each.value.resource_group_name
   location            = each.value.location
   server_name         = azurerm_mssql_server.mssqlserver.name

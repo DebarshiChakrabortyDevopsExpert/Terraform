@@ -1,5 +1,5 @@
 resource "azurerm_mssql_server" "mssqlserver" {
-  name                = "sqldb-org-${var.ms_sql_server.env}-uks-${var.ms_sql_server.instance_number}"
+  name                = "sqldb-org-${var.ms_sql_server.env}-eus-${var.ms_sql_server.instance_number}"
   resource_group_name = var.ms_sql_server.resource_group_name
   location            = var.ms_sql_server.location
   version             = try(var.ms_sql_server.version, "12.0")
