@@ -3,7 +3,7 @@
 
 - This Folder consists of Terraform modules for multiple Azure Resources
 
-<H1> RMS Terraform Modules Release Summary </H1>
+<H1> org Terraform Modules Release Summary </H1>
 
 
 |       Item                        | Description                                                                   |
