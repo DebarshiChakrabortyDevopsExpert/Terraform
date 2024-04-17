@@ -153,6 +153,114 @@ windows_web_app = {
             }
       }
   }
+
+  web_app1 = {
+    windows_web_app = {  
+      env                       = "prod"
+      instance_number           = "02"
+      resource_group_name       = "rg-org-prod-eus-org"
+      location                  = "eastus"
+      service_plan_name         = "asp-org-prod-eus-01"
+      service_plan_rg           = "rg-org-prod-eus-org"
+      application_insights_name = "appi-org-prod-eus-001"
+      application_insights_rg   = "rg-org-prod-eus-monitoring"
+      client_certificate_enabled = "true"
+      client_certificate_mode    = "Required"
+      app_settings = {
+        WEBSITE_RUN_FROM_PACKAGE=1
+      }
+
+      identity = {
+        type = "SystemAssigned"
+      }
+
+      site_config = {
+        always_on                = false
+        worker_count             = 1
+        ftps_state               = "FtpsOnly"
+        http2_enabled            = false
+        minimum_tls_version      = "1.2"
+        remote_debugging_enabled = false
+
+        application_stack = {
+          current_stack  = "node"
+          node_version   = "16-LTS"
+        }
+
+        virtual_application = {
+          physical_path = "site\\wwwroot\\dist"
+          preload       = false
+          virtual_path  = "/"
+        }
+
+        ip_restriction = {
+          ip_address = "xx.x.xx.x/25"
+          name       = "rule1"
+          priority   = 300
+          action     = "Allow"
+        }
+      }
+
+      auth_settings = {
+        default_provider              = "Github"
+        enabled                       = false
+        unauthenticated_client_action = "RedirectToLoginPage"
+      }
+      tags = {
+        "application"  = "org",
+        "createdby"    = "IaC",
+      }
+    }
+    webapp_vnets = {
+            vnet1 = {
+                subnet_name             = "snet-org-prod-eus-appservicessubnet"
+                vnet_name               = "vnet-org-prod-eus"
+                vnet_rg_name            = "rg-org-prod-eus-network"
+            }
+      }
+      
+      webapp_diagnostics_settings = {
+        ds1 = {
+          name                           = "web App Logs and Metrics"
+          log_analytics_destination_type = "Dedicated"
+          log_analytics_workspace_id     = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rg-org-mgmt-eus-monitoring/providers/Microsoft.OperationalInsights/workspaces/lw-org-mgmt-eus-01"
+          
+          log =[
+            {  
+            category_group = "allLogs"  
+            enabled    = true  
+            }
+          ]
+          
+          metric = [
+            {
+            category = "AllMetrics"
+            enabled  = true
+            }
+          ]
+        }
+      } 
+      webapp_private_endpoint = {
+          webapp_endpoint1 = {
+                name                    = "priep-webapp-org-prod-eus-01"
+                location                = "eastus"
+                resource_group_name     = "rg-org-prod-eus-org"
+                subnet_name             = "snet-org-prod-eus-app"
+                vnet_name               = "vnet-org-prod-eus"
+                vnet_rg_name            = "rg-org-prod-eus-network"
+                private_connection_name = "prisc-webapp-org-prod-eus-01"
+                private_dns_zone_group = {
+                name = "webappzonegroup"
+                dnszones = {
+                    zone1 = {
+                    dns_zone_name    = "privatelink.azurewebsites.net"
+                    dns_zone_rg_name = "rg-org-cnct-eus-network"
+                    }
+                }
+                }
+            }
+      }
+  }
 }
 
 ############################
